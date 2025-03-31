@@ -45,6 +45,9 @@
                     <ul>
                         {% for trainer in course.trainers %}
                             <li>{{ trainer.firstname }} {{ trainer.lastname }}</li>
+
+                        {% else %}
+                            <li>Pas de formateur(s)</li>
                         {% endfor %}
                     </ul>
                 </td>

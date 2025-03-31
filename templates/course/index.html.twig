@@ -16,6 +16,7 @@
                 <th>Duration</th>
                 <th>IsPublished</th>
                 <th>Category</th>
+                <th>Trainers</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                 <td>{{ course.duration }}</td>
                 <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
                 <td>{{ course.category.name }}</td>
+                <td>{{ course.trainers|length }}</td>
                 <td>
                     <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>
                     <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>

@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Doctrine\ORM\EntityRepository;
 
 class CourseType extends AbstractType
 {
@@ -17,22 +18,21 @@ class CourseType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('modifiedAt', null, [
-                'widget' => 'single_text',
-            ])
             ->add('duration')
             ->add('isPublished')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
+                'placeholder' => '--Choisissez une catégorie--',
+                'query_builder' => function (EntityRepository $repository) {
+                        return $repository->createQueryBuilder('c')
+                            ->orderBy('c.name', 'ASC');
+                    }
             ])
             ->add('trainers', EntityType::class, [
                 'class' => Trainer::class,
-                'choice_label' => 'id',
-                'multiple' => true,
+                'choice_label' => 'fullname',
+                'multiple' => true
             ])
         ;
     }
