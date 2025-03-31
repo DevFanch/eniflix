@@ -13,7 +13,7 @@ class CategoryFixture extends Fixture
     {
         $category = new Category();
         $category->setName('Développement web');
-        $this->addReference('category-1', $category, );
+        $this->addReference('category-1', $category);
         $manager->persist($category);
         
         $category1 = new Category();

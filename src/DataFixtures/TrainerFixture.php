@@ -27,7 +27,7 @@ class TrainerFixture extends Fixture implements DependentFixtureInterface
 
     public function getDependencies(): array {
         return [
-            CategoryFixtures::class
+            CategoryFixture::class
         ];
     }
 }

@@ -66,8 +66,8 @@ class CourseFixture extends Fixture implements DependentFixtureInterface
     
     public function getDependencies(): array {
         return [
-            CategoryFixtures::class,
-            TrainerFixtures::class
+            CategoryFixture::class,
+            TrainerFixture::class
         ];
     }
 }
