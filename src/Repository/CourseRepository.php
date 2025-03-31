@@ -16,6 +16,11 @@ class CourseRepository extends ServiceEntityRepository
         parent::__construct($registry, Course::class);
     }
 
+    /**
+     * Renvoie les 5 derniers cours qui ont une dur e sup rieure  2
+     * 
+     * @return Course[]
+     */
     public function findLastCourses(): array {
         // en DQL
         $entityManager = $this->getEntityManager();

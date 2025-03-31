@@ -35,6 +35,20 @@
                 <th>IsPublished</th>
                 <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ course.category.name }}</td>
+            </tr>
+            <tr>
+                <th>Trainers : {{ course.trainers|length }}</th>
+                <td>
+                    <ul>
+                        {% for trainer in course.trainers %}
+                            <li>{{ trainer.firstname }} {{ trainer.lastname }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
         </tbody>
     </table>
 

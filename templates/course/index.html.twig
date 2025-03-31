@@ -15,6 +15,7 @@
                 <th>ModifiedAt</th>
                 <th>Duration</th>
                 <th>IsPublished</th>
+                <th>Category</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td>{{ course.modifiedAt ? course.modifiedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ course.duration }}</td>
                 <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
+                <td>{{ course.category.name }}</td>
                 <td>
                     <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>
                     <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
