@@ -25,9 +25,9 @@ class CourseType extends AbstractType
                 'choice_label' => 'name',
                 'placeholder' => '--Choisissez une catégorie--',
                 'query_builder' => function (EntityRepository $repository) {
-                        return $repository->createQueryBuilder('c')
-                            ->orderBy('c.name', 'ASC');
-                    }
+                    return $repository->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                }
             ])
             ->add('trainers', EntityType::class, [
                 'class' => Trainer::class,
