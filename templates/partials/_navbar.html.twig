@@ -1,0 +1,36 @@
+    <h1>
+        <a href="{{ path('app_home') }}">
+            <img src="{{ asset('images/logo.png') }}">
+        </a>
+    </h1>
+	<ul class="navbar-nav me-auto d-flex mb-2 mb-lg-0">
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ path('app_course_index') }}">Cours</a>
+		</li>
+		{% if app.user %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_course_new') }}">
+					Créer
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_logout') }}">
+					Se déconnecter
+				</a>
+			</li>
+		{% else %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_register') }}">
+					S'inscrire
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ path('app_login') }}">
+					Se connecter
+				</a>
+			</li>
+		{% endif %}
+	</ul>

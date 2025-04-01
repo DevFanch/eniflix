@@ -13,24 +13,14 @@
     </head>
     <body>
         <div class="container-fluid">
-            <h1><img src="{{ asset('images/logo.png') }}"></h1>
-            <nav>
-                <ul>
-                    <li style="padding: 5px;"><a href="{{ path('serie_list') }}">Catalogue</a></li>
-                    <li style="padding: 5px;"><a href="{{ path('serie_create') }}">Ajouter une Série</a></li>
-                    <li style="padding: 5px;"><a href="{{ path('app_course_index') }}">Cours</a></li>
-                </ul>
-            </nav>
 
-            {% for label, messages in app.flashes %}
-                {%  for message in messages %}
-                    <div class="alert alert-{{ label }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
+            {% include "partials/_navbar.html.twig" %}
+
+            {% include "partials/_flashes.html.twig" %}
 
             {% block body %}{% endblock %}
+
+            
         </div>
     </body>
 </html>
