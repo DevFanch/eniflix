@@ -33,8 +33,13 @@
                 <td>{{ course.category.name }}</td>
                 <td>{{ course.trainers|length }}</td>
                 <td>
-                    <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>
-                    <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
+                    {% if is_granted('ROLE_PLANNER') %}
+                        <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>
+                        <a href="{{ path('app_course_edit', {'id': course.id}) }}">edit</a>
+                    {% else %}
+                        <img width="20px" src="{{ asset('hell-icon.png') }}" alt="lock">
+                    {% endif %}
+
                 </td>
             </tr>
         {% else %}
@@ -45,5 +50,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_course_new') }}">Create new</a>
+    {% if is_granted('ROLE_PLANNER') %}
+        <a href="{{ path('app_course_new') }}" class="btn btn-primary">Create new</a>
+    {% endif %}
 {% endblock %}
