@@ -31,7 +31,13 @@
                 <td>{{ course.duration }}</td>
                 <td>{{ course.isPublished ? 'Yes' : 'No' }}</td>
                 <td>{{ course.category.name }}</td>
-                <td>{{ course.trainers|length }}</td>
+                <td>
+                    {% if course.trainers|length > 0 %}
+                        <a href="{{ path('app_trainer_course', {'id': course.id}) }}">show</a>
+                    {% else %}
+                        {{ course.trainers|length }}    
+                    {% endif %}
+                </td>
                 <td>
                     {% if is_granted('ROLE_PLANNER') %}
                         <a href="{{ path('app_course_show', {'id': course.id}) }}">show</a>

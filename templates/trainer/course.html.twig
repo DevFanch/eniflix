@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ course.name }}
+	- Détails du cours
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<!-- En-tête du cours -->
+		<div class="row mb-4">
+			<div class="col-md-8">
+				<h1 class="display-4">{{ course.name }}</h1>
+				<div class="d-flex align-items-center my-3">
+					<span class="badge bg-primary me-2">{{ course.duration }} heures</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Détails du cours -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card shadow-sm mb-4">
+					<div class="card-header bg-light">
+						<h2 class="h5 mb-0">Contenu du cours</h2>
+					</div>
+					<div class="card-body">
+						{{ course.content|raw }}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<!-- Liste des formateurs -->
+				<div class="card shadow-sm">
+					<div class="card-header bg-light">
+						<h2 class="h5 mb-0">Formateurs</h2>
+					</div>
+					<div class="card-body">
+						{% if course.trainers|length > 0 %}
+							{% for formateur in course.trainers %}
+								<div class="d-flex align-items-center mb-3 {% if not loop.last %}border-bottom pb-3{% endif %}">
+									<div>
+										<h3 class="h6 mb-0">{{ formateur.firstname }}
+											{{ formateur.lastname }}</h3>
+                                            <a href="{{ path('app_trainer_show', {'id': formateur.id}) }}" class="btn btn-sm btn-outline-primary">Voir le profil</a>
+									</div>
+								</div>
+							{% endfor %}
+						{% else %}
+							<p class="text-muted">Aucun formateur assigné à ce course.</p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
