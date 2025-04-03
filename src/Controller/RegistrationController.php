@@ -28,7 +28,8 @@ class RegistrationController extends AbstractController
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         EntityManagerInterface $entityManager,
-        TrackUserService $trackUserService): Response
+        TrackUserService $trackUserService
+    ): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -46,6 +47,9 @@ class RegistrationController extends AbstractController
 
             // Call Log service
             $trackUserService->addLogWhenRegister($user);
+
+            // Call Survey service
+            $trackUserService->alertAdminWhenLogin($user);
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
