@@ -46,7 +46,7 @@ final class CourseController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_course_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_course_show', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(Course $course): Response
     {
         if (!$course) {
